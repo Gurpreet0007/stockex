@@ -25,14 +25,7 @@ StockExchangeRepository stockrepo;
 	@Override
 	public void run(String... args) throws Exception {
 
-		StockExchange stockex=new StockExchange();
-		stockex.setstockExchange("BSE");
-		stockex.setAdd("moga");
-		stockrepo.save(stockex);
-		StockExchange stock=new StockExchange();
-		stock.setstockExchange("NSE");
-		stock.setAdd("YORK");
-		stockrepo.save(stock);
+		
 		
 		
 	}

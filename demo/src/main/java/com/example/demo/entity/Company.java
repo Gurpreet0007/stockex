@@ -32,7 +32,7 @@ public class Company {
     private Sector sector;
     @OneToOne(cascade = CascadeType.ALL)
 	private Ipo ipo;
-    @OneToMany
+    @OneToMany(mappedBy="company")
     List<StockPrice> stockPrice=new ArrayList<>();
 	private String writeup;
 	public Ipo getipo()
@@ -69,6 +69,10 @@ public class Company {
 	public void addStockexchanges(StockExchange stockExchange) {
 		this.stockExchanges.add ( stockExchange);
 	}
+	public void addListStockexchanges(List<StockExchange> stockExchange) {
+		this.stockExchanges= stockExchange;
+	}
+	
 	public void removeStockexchanges(StockExchange stockExchange) {
 		this.stockExchanges.remove ( stockExchange);
 	}

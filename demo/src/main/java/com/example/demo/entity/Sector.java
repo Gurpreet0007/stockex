@@ -28,7 +28,7 @@ public class Sector {
 	}
 	public void removeCompany(Company company)
 	{
-		this.companies.add(company);
+		this.companies.remove(company);
 	}
 	
 	public String getName() {

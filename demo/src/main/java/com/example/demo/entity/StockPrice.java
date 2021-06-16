@@ -13,7 +13,8 @@ public class StockPrice {
 	private	Company company; 
    @ManyToOne
 	private StockExchange stockexchange;
-	private int price;
+	
+   private long price;
 	
 	private String date;
 	
@@ -35,11 +36,11 @@ public class StockPrice {
 		this.stockexchange = stockexchange;
 	}
 
-	public int getPrice() {
+	public long getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 

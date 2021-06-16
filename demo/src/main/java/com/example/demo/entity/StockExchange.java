@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +28,8 @@ public class StockExchange {
 	private List<Company> companies=new ArrayList<>();
 	@ManyToMany(mappedBy="stockExchange",cascade = CascadeType.ALL)
 	private List<Ipo> ipo=new ArrayList<>();
+	 @OneToMany(mappedBy="stockexchange")
+	    List<StockPrice> stockPrice=new ArrayList<>();
 	
 	public List<Ipo> getStockExchange()
 	{
@@ -78,4 +81,18 @@ public void removecompany(Company company)
 {
 	this.companies.remove(company);
 }
+public void addStockPrice(StockPrice stockPrice)
+{
+	this.stockPrice.add(stockPrice);
+}
+public List<StockPrice> getStockPrice()
+{
+	return stockPrice;
+}
+public void removeStockPrice(StockPrice stockPrice)
+{
+this.stockPrice.remove(stockPrice);
+}
+
+
 }

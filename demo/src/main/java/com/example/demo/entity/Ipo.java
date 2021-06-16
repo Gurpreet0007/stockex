@@ -34,6 +34,12 @@ private long number;
 	{
 		this.stockExchange.add(stockExchange);
 	}
+	
+	public void addListStockExchange(List<StockExchange> stockExchange)
+	{
+		this.stockExchange=stockExchange;
+	}
+	
 	public void removeStockExchange(StockExchange stockExchange)
 	{
 		this.stockExchange.remove(stockExchange);
