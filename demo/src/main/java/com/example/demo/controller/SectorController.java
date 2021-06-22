@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,15 +28,39 @@ public class SectorController {
 	SectorRepository sectorrepo;
 	
 	
-	
+	@CrossOrigin(origins ="http://localhost:3000")
 	@Transactional
 	@PostMapping("/addsector")
-	public void addcompany( @RequestBody  Sectordto sectordto) {
+	public void addsector( @RequestBody  Sectordto sectordto) {
 		Sector sector=new Sector();
 		sector.setName(sectordto.getName());
 		sector.setBrief(sectordto.getBrief());
 		sectorrepo.save(sector);
 	}
+	@CrossOrigin(origins ="http://localhost:3000")
+	@Transactional
+	@PostMapping("/deletesector")
+	public void deletesector( @RequestBody  Sectordto sectordto) {
+		sectorrepo.deleteByName(sectordto.getName());
+	}
+	@CrossOrigin(origins ="http://localhost:3000")
+	@Transactional
+	@GetMapping("/getsector")
+	public List<Sectordto> getsector( ) {
+		List<Sector> sectors=sectorrepo.findAll();
+		List<Sectordto> list=new ArrayList<>();
+		
+		for(Sector sector:sectors)
+		{
+			Sectordto dto=new Sectordto();
+			dto.setName(sector.getName());
+			dto.setBrief(sector.getBrief());
+			list.add(dto);
+		}
+	return list;
+	}
+	
+	
 	@Transactional
 	@GetMapping("/displayCompanyinSector/{name}")
 	public  List<String> displayCompanyinSector(@PathVariable("name") String name)

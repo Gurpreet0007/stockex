@@ -38,8 +38,9 @@ public class IpoService {
 	IpoRepository iporepo;
 
 	public void updateipodetails(Ipodto ipodto) {
-		Company company=companyrepo.findByName(ipodto.getCompanyname());
+		Company company=companyrepo.findById(ipodto.getId());
 		Ipo ipo=company.getipo();
+		company.setName(ipodto.getCompanyname());
 		ipo.setDate(ipodto.getDate());
 		ipo.setNumber(ipodto.getNumber());
 		ipo.setTime(ipodto.getTime());
@@ -62,10 +63,11 @@ public class IpoService {
 		
 	}
 
-	public Ipodto displayCompanyIpo(String name) {
-		Company company=companyrepo.findByName(name);
+	public Ipodto displayCompanyIpo(long id) {
+		Company company=companyrepo.findById(id);
 		Ipodto ipodto=new Ipodto();
-		ipodto.setCompanyname(name);
+		ipodto.setId(id);
+		ipodto.setCompanyname(company.getName());
 		ipodto.setDate((company.getipo()).getDate());
 		ipodto.setTime((company.getipo()).getTime());
 		ipodto.setPrice((company.getipo()).getPrice());
@@ -102,6 +104,7 @@ public class IpoService {
 				dt.setDate(ip.getDate());
 				dt.setTime(ip.getTime());
 				dt.setNumber(ip.getNumber());
+				dt.setPrice(ip.getPrice());
 				list.add(dt);
 					 }
 		 }

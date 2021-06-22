@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,19 +36,20 @@ public class IpoController {
 	@Autowired
 	IpoService iposervice;
 	
-	
+	@CrossOrigin(origins ="http://localhost:3000")
 	@Transactional
 	@PostMapping("/updateipo")
 	public void addupdateipo( @RequestBody Ipodto ipodto) {
 	iposervice.updateipodetails(ipodto);
 		}
-	
+@CrossOrigin(origins ="http://localhost:3000")
 @Transactional
-@GetMapping("/displayCompanyIpo/{name}")
-public Ipodto displayCompanyIpo(@PathVariable("name") String name)
+@GetMapping("/displayCompanyIpo/{id}")
+public Ipodto displayCompanyIpo(@PathVariable("id") long id)
 {
-	return iposervice.displayCompanyIpo(name);
+	return iposervice.displayCompanyIpo(id);
 }
+@CrossOrigin(origins ="http://localhost:3000")
 @Transactional
 @GetMapping("/displayUpcomingIpo")
 public List<Ipodto> displayUpcomingIpo()

@@ -35,6 +35,10 @@ public class Company {
     @OneToMany(mappedBy="company")
     List<StockPrice> stockPrice=new ArrayList<>();
 	private String writeup;
+	public long getId()
+	{
+		return id;
+	}
 	public Ipo getipo()
 	{
 		return this.ipo;

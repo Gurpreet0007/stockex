@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
@@ -45,7 +46,8 @@ public	List<CompanyResponse> displayallCompanies()
 	for(Company company : companies)
 	{
 	CompanyResponse companyres=new CompanyResponse();
-		companyres.setName(company.getName());
+	companyres.setId(company.getId());	
+	companyres.setName(company.getName());
 		companyres.setCeo(company.getCeo());
 		companyres.setDirectors(company.getDirectors());
 		companyres.setTurnover(company.getTurnover());
@@ -59,10 +61,11 @@ public	List<CompanyResponse> displayallCompanies()
 	
 	return companyresponse;
 }
-public CompanyResponse displayCompany(String name) {
-	Company company=companyrepo.findByName(name);
+public CompanyResponse displayCompany(long id) {
+	Company company=companyrepo.findById(id);
 	
 	CompanyResponse companyres=new CompanyResponse();
+	companyres.setId(id);
 	companyres.setName(company.getName());
 	companyres.setCeo(company.getCeo());
 	companyres.setDirectors(company.getDirectors());
@@ -86,9 +89,10 @@ public List<String> displayMatchingCompanies(String name) {
 	}
 	return response;
 }
-public void updateBsicCompany(Companyupdatedto companyupdto) {
-	Company company=companyrepo.findByName(companyupdto.getName());
-	company.setCeo(companyupdto.getCeo());
+public void updateBsicCompany(long id,Companyupdatedto companyupdto) {
+	Company company=companyrepo.findById(id);
+	company.setName(companyupdto.getName());
+	company.setTurnover(companyupdto.getTurnover());
 	company.setDirectors(companyupdto.getDirectors());
 	company.setCeo(companyupdto.getCeo());
 	Sector sector=company.getSector();

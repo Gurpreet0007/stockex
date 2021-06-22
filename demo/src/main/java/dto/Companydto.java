@@ -13,6 +13,7 @@ public class Companydto {
 	private long no;
 	private long price;
 	private String time;
+	private String companycode;
 	public String getName() {
 		return name;
 	}
@@ -70,6 +71,12 @@ public class Companydto {
 	
 	public List<String> getstockexchange() {
 		return stockexchange;
+	}
+	public String getCompanycode() {
+		return companycode;
+	}
+	public void setCompanycode(String companycode) {
+		this.companycode = companycode;
 	}
 
 

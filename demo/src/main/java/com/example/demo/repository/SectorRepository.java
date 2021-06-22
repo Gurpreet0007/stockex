@@ -10,4 +10,6 @@ public interface SectorRepository extends JpaRepository<Sector,Long> {
 
 	Sector findByName(String string);
 
+	void deleteByName(String name);
+
 }

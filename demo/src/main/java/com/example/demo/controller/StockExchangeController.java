@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +34,7 @@ public class StockExchangeController{
 	
 	@Autowired
 	StockExchangeService stockservice;
-	
+	@CrossOrigin(origins ="http://localhost:3000")
 	@Transactional
 	@PostMapping("/addStockExchange")
 	public void addStockExchange( @RequestBody StockExchangedto stockexchangedto) {
@@ -43,6 +45,24 @@ public class StockExchangeController{
 		stockexchange.setRemarks(stockexchangedto.getRemarks());
 		stockrepo.save(stockexchange);
 	}
+	@CrossOrigin(origins ="http://localhost:3000")
+	@Transactional
+	@GetMapping("/getStockExchange")
+	public List<StockExchangedto> getStockExchange() {
+		List<StockExchange> stockexchanges=stockrepo.findAll()	;
+	List<StockExchangedto> list=new ArrayList<>();
+
+	for(StockExchange stockexchange: stockexchanges)
+	{StockExchangedto dto=new StockExchangedto();
+		dto.setStockExchange(stockexchange.getstockExchange());
+		dto.setAddress(stockexchange.getAddress());
+		dto.setBrief(stockexchange.getBrief());
+		dto.setRemarks(stockexchange.getRemarks());
+		list.add(dto);
+	}
+	return list;
+	}
+	
 	@Transactional
 	@GetMapping("/displayCompanyinStockExchange/{name}")
 	public  List<String> displayCompanyinStockExchange(@PathVariable("name") String name)

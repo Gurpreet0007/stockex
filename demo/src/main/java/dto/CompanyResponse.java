@@ -12,6 +12,7 @@ import com.example.demo.entity.Sector;
 import com.example.demo.entity.StockExchange;
 
 public class CompanyResponse {
+	private long id;
 	private String name;
 	private float turnover;
 	
@@ -85,6 +86,16 @@ public void addStockExchange(String stockexchange)
 
 	public void setSector(String sector) {
 		this.sector = sector;
+	}
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
 	}
     
 }
