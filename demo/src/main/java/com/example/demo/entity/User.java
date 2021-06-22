@@ -20,15 +20,14 @@ public class User {
 	private String num;
 	private boolean confirmed;
 
-	public User()
-	{
-		
-	}
-	public User(String name)
-	{
-		this.setName(name);
-	}
 
+public long getId()
+{
+	return id;
+	
+}
+
+	
 	public String getName() {
 		return name;
 	}

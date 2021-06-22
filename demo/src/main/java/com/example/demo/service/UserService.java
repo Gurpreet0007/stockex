@@ -12,12 +12,12 @@ public class UserService {
 @Autowired
 UserRepository userrepo;
 	public void addUser(Userdto userdto) {
-		User user=new User();
+/*		User user=new User();
 		user.setName(userdto.getName());
 		user.setEmail(userdto.getEmail());
 		user.setPassword(userdto.getPassword());
 	user.setUsertype(userdto.getRole());
 		userrepo.save(user);
-	}
+	}*/
 
-}
+}}

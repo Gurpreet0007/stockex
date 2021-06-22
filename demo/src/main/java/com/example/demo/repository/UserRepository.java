@@ -6,4 +6,6 @@ import com.example.demo.entity.User;
 
 public interface UserRepository extends JpaRepository<User,Long> {
 
+	User findByEmailAndPasswordAndUsertypeAndConfirmed(String email, String password, String usertype, boolean b);
+
 }

@@ -4,7 +4,8 @@ public class Userdto {
 	private String  name;
 	private String  email;
 	private String  password;
-	private String role;
+	private String usertype;
+	private String num;
 	public String getName() {
 		return name;
 	}
@@ -23,11 +24,29 @@ public class Userdto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRole() {
-		return role;
+	//public String getRole() {
+		//return role;
+	//}
+	//public void setRole(String Role) {
+		//this.role = Role;
+	//}
+/*	public String getPhonenumber() {
+		return phonenumber;
 	}
-	public void setRole(String Role) {
-		this.role = Role;
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}*/
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
+	public String getUsertype() {
+		return usertype;
+	}
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
 	}
 
 }
