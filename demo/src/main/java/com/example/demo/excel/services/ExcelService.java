@@ -43,7 +43,7 @@ public class ExcelService
 
     public void uploadExcel(MultipartFile file) throws IOException, ParseException, SQLException
     {
-        String url = "jdbc:mysql://localhost:3306/stockstore";
+        String url = "jdbc:mysql://localhost:3306/excelstore";
         Connection connect = DriverManager.getConnection(url,"root","Guri@3421");
         // File file = new File("C:\\Users\\Lenovo User\\Desktop\\ripunjoy\\companies\\sample_stock_data.xlsx");   //creating a new file instance
         File filez = multipartFileToFile(file);

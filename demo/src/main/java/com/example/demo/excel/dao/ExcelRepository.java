@@ -15,6 +15,14 @@ import com.example.demo.excel.entities.stockPriceEntity;
 public interface ExcelRepository extends JpaRepository<stockPriceEntity,Long>
 {
 
+	
+
+	
+
+	
+
+	
+
 
 
 }

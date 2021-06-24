@@ -41,7 +41,7 @@ public class CompanyController {
 	SectorRepository sectorrepo;
 	@Autowired
 	CompanyService companyservice;
-	@CrossOrigin(origins ="http://localhost:3000")
+	@CrossOrigin(origins ="https://gurpreet0007.github.io/")
 	@Transactional
 	@PostMapping("/addcompany")
 	public void addcompany( @RequestBody Companydto companydto) {

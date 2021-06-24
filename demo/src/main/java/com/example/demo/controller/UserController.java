@@ -50,7 +50,7 @@ public class UserController {
 	UserRepository userrepo;
 	@Autowired
 	UserService userservice;
-	@CrossOrigin(origins ="http://localhost:3000")
+	 @CrossOrigin(origins ="*")
 	@Transactional
 	@PostMapping("/login")
 	public Resultdto login(@RequestBody Userdto userdto)
@@ -148,6 +148,9 @@ User usrsaved = userrepo.save(us);
 	    {
 
 
+Optional<User> user=userrepo.findById(userid);
+User us=user.get();
+String mail=us.getEmail();
 
 	        final String username = "cheggexpert1337@gmail.com";
 	        final String password = "LetsLearn@123";
@@ -168,10 +171,10 @@ User usrsaved = userrepo.save(us);
 	        try {
 
 	            Message message = new MimeMessage(session);
-	            message.setFrom(new InternetAddress("gurpreetrai000007@gmail.com"));
+	            message.setFrom(new InternetAddress(mail));
 	            message.setRecipients(
 	                    Message.RecipientType.TO,
-	                    InternetAddress.parse("gurpreetrai000007@gmail.com")
+	                    InternetAddress.parse(mail)
 	            );
 	            message.setSubject("User Registration confirmation email");
 	            //     message.setText("Dear Mail Crawler,"
